@@ -61,20 +61,22 @@ view: submission_submissionimage {
   dimension: url_link {
     type: string
     sql: CONCAT('http://jobs.zubale.com//aws/', ${url}) ;;
+    html: <a href="{{ value }}" target="_blank">{{value}}</a> ;;
   }
+
   dimension: link {
     sql: ${url};;
     html: <a href=http://jobs.zubale.com//aws/{{value}} target="_blank">Photo</a> ;;
   }
   dimension: dimension_with_picture {
     type: string
-    sql: ${url};;
+    sql: ${url_link};;
     html:
       <details>
          <summary>Imagen</summary>
          <p>
-          <a href=http://jobs.zubale.com//aws/{{value}} target="_blank">
-          <img height="100" src="http://jobs.zubale.com//aws/{{value}}"></img>
+          <a href={{value}} target="_blank">
+          <img height="100" src="{{value}}"></img>
           </a>
         </p>
       </details>

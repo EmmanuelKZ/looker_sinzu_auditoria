@@ -60,7 +60,10 @@ view: submission_submissionimage {
 
   dimension: url_link {
     type: string
-    sql: CONCAT('http://jobs.zubale.com//aws/', ${url}) ;;
+    sql: CASE
+            WHEN ${url} is NULL THEN ${url}
+            ELSE CONCAT('http://jobs.zubale.com//aws/', ${url})
+            END;;
     html: <a href="{{ value }}" target="_blank">{{value}}</a> ;;
   }
 

@@ -9,7 +9,13 @@ persist_with: sinzu_auditoria_default_datagroup
 
 include: "/views/**/*.view"
 
+access_grant: view_deprecated {
+  user_attribute: view_deprecated
+  allowed_values: ["yes"]
+}
+
 explore: sinzu_auditoria_store {
+  required_access_grants: [view_deprecated]
   from: location_store
 
   join: retail {
